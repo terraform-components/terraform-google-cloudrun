@@ -26,19 +26,19 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_cloudsql_connection_name"></a> [cloudsql\_connection\_name](#input\_cloudsql\_connection\_name) | n/a | `string` | `null` | no |
-| <a name="input_container_concurrency"></a> [container\_concurrency](#input\_container\_concurrency) | n/a | `number` | `100` | no |
-| <a name="input_container_initial_image"></a> [container\_initial\_image](#input\_container\_initial\_image) | n/a | `string` | `"us-docker.pkg.dev/cloudrun/container/hello"` | no |
-| <a name="input_execution_environment"></a> [execution\_environment](#input\_execution\_environment) | n/a | `string` | `"gen1"` | no |
-| <a name="input_ingress"></a> [ingress](#input\_ingress) | n/a | `string` | `"internal-and-cloud-load-balancing"` | no |
-| <a name="input_invokers"></a> [invokers](#input\_invokers) | n/a | `list(string)` | <pre>[<br>  "allUsers"<br>]</pre> | no |
-| <a name="input_max_scale"></a> [max\_scale](#input\_max\_scale) | n/a | `number` | `5` | no |
-| <a name="input_min_scale"></a> [min\_scale](#input\_min\_scale) | n/a | `number` | `0` | no |
-| <a name="input_name"></a> [name](#input\_name) | n/a | `string` | n/a | yes |
-| <a name="input_region"></a> [region](#input\_region) | n/a | `string` | n/a | yes |
-| <a name="input_service_account_email"></a> [service\_account\_email](#input\_service\_account\_email) | n/a | `string` | n/a | yes |
-| <a name="input_vpc_access_connector"></a> [vpc\_access\_connector](#input\_vpc\_access\_connector) | n/a | `string` | `null` | no |
-| <a name="input_vpc_access_egress"></a> [vpc\_access\_egress](#input\_vpc\_access\_egress) | n/a | `string` | `"private-ranges-only"` | no |
+| <a name="input_cloudsql_connection_name"></a> [cloudsql\_connection\_name](#input\_cloudsql\_connection\_name) | if set will populate the cloud sql connection name | `string` | `null` | no |
+| <a name="input_container_concurrency"></a> [container\_concurrency](#input\_container\_concurrency) | how many requests can be handled at the same time | `number` | `100` | no |
+| <a name="input_container_initial_image"></a> [container\_initial\_image](#input\_container\_initial\_image) | container image to use | `string` | `"us-docker.pkg.dev/cloudrun/container/hello"` | no |
+| <a name="input_execution_environment"></a> [execution\_environment](#input\_execution\_environment) | there is gen1 and gen2 | `string` | `"gen1"` | no |
+| <a name="input_ingress"></a> [ingress](#input\_ingress) | ingress could be public or just from load balancing and/or internal | `string` | `"internal-and-cloud-load-balancing"` | no |
+| <a name="input_invokers"></a> [invokers](#input\_invokers) | who can invoke cloud run. allUsers means everyone, which means 'public' | `list(string)` | <pre>[<br>  "allUsers"<br>]</pre> | no |
+| <a name="input_max_scale"></a> [max\_scale](#input\_max\_scale) | maximum number of instances | `number` | `5` | no |
+| <a name="input_min_scale"></a> [min\_scale](#input\_min\_scale) | minimum number of instances | `number` | `0` | no |
+| <a name="input_name"></a> [name](#input\_name) | name of the service | `string` | n/a | yes |
+| <a name="input_region"></a> [region](#input\_region) | region the service will be running in | `string` | n/a | yes |
+| <a name="input_service_account_email"></a> [service\_account\_email](#input\_service\_account\_email) | service account email used for permissions | `string` | n/a | yes |
+| <a name="input_vpc_access_connector"></a> [vpc\_access\_connector](#input\_vpc\_access\_connector) | if set, this will use that vpc access connector of a connected vpc | `string` | `null` | no |
+| <a name="input_vpc_access_egress"></a> [vpc\_access\_egress](#input\_vpc\_access\_egress) | do we want to route everything or just private ranges through the vpc? | `string` | `"private-ranges-only"` | no |
 
 ## Outputs
 
