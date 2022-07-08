@@ -1,28 +1,43 @@
 variable "name" {
   type        = string
-  description = "name of the service"
+  description = "Name of the Service"
 }
 
 variable "region" {
   type        = string
-  description = "region the service will be running in"
+  description = "Region the service will be running in"
 }
 
 variable "service_account_email" {
   type        = string
-  description = "service account email used for permissions"
+  description = "Service account email used for the service authenticating to others"
 }
 
 variable "invokers" {
   type        = list(string)
   default     = ["allUsers"]
-  description = "who can invoke cloud run. allUsers means everyone, which means 'public'"
+  description = <<-EOT
+    *allUsers*: Anyone on the Internet
+    *allAuthenticatedUsers*: Anyone logged in with a Google Account
+    *user:{email}*: A specific user
+    *serviceAccount:{email}*: Service Account
+    *group:{email}*: Google Group
+    *domain:{domain}*: G Suite domain
+    *projectOwner:{project_id}*: Owners of that project
+    *projectEditor:{project_id}*: Editors of that project
+    *projectViewer:{projectid}*: Viewers of that project
+    EOT
 }
 
 variable "ingress" {
   type        = string
   default     = "internal-and-cloud-load-balancing"
-  description = "ingress could be public or just from load balancing and/or internal"
+  description = <<-EOT
+    all - Public
+    internal - Inbound from VPC
+    internal-and-cloud-load-balancing - Inbound from VPC and Cloud Load Balancing
+    https://cloud.google.com/sdk/gcloud/reference/run/deploy#--ingress
+    EOT
 }
 
 variable "execution_environment" {
