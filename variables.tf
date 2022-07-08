@@ -17,15 +17,15 @@ variable "invokers" {
   type        = list(string)
   default     = ["allUsers"]
   description = <<-EOT
-    *allUsers*: Anyone on the Internet
-    *allAuthenticatedUsers*: Anyone logged in with a Google Account
-    *user:{email}*: A specific user
-    *serviceAccount:{email}*: Service Account
-    *group:{email}*: Google Group
-    *domain:{domain}*: G Suite domain
-    *projectOwner:{project_id}*: Owners of that project
-    *projectEditor:{project_id}*: Editors of that project
-    *projectViewer:{projectid}*: Viewers of that project
+    **allUsers**: Anyone on the Internet
+    **allAuthenticatedUsers**: Anyone logged in with a Google Account
+    **user:{email}**: A specific user
+    **serviceAccount:{email}**: Service Account
+    **group:{email}**: Google Group
+    **domain:{domain}**: G Suite domain
+    **projectOwner:{project_id}**: Owners of that project
+    **projectEditor:{project_id}**: Editors of that project
+    **projectViewer:{projectid}**: Viewers of that project
     EOT
 }
 
@@ -33,9 +33,9 @@ variable "ingress" {
   type        = string
   default     = "internal-and-cloud-load-balancing"
   description = <<-EOT
-    all - Public
-    internal - Inbound from VPC
-    internal-and-cloud-load-balancing - Inbound from VPC and Cloud Load Balancing
+    **all**: Public
+    **internal**: Inbound from VPC
+    **internal-and-cloud-load-balancing**: Inbound from VPC and Cloud Load Balancing
     https://cloud.google.com/sdk/gcloud/reference/run/deploy#--ingress
     EOT
 }
