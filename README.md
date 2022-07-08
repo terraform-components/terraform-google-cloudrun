@@ -1,3 +1,7 @@
+# Terraform Module for Google Cloudrun
+
+For Cloud Run it is recommended to read this FAQ as it will answer many questions already: [ahmetb/cloud-run-faq](https://github.com/ahmetb/cloud-run-faq)
+
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
 
@@ -29,7 +33,7 @@ The following input variables are required:
 
 ### <a name="input_environment_variables"></a> [environment\_variables](#input\_environment\_variables)
 
-Description: n/a
+Description: values to set in the environment
 
 Type: `map(string)`
 
@@ -65,7 +69,9 @@ Default: `null`
 
 ### <a name="input_container_concurrency"></a> [container\_concurrency](#input\_container\_concurrency)
 
-Description: how many requests can be handled at the same time
+Description: How many requests can be handled at the same time.
+**This is a critical setting for cloudrun**  
+Read more: https://cloud.google.com/run/docs/about-concurrency
 
 Type: `number`
 
@@ -73,7 +79,7 @@ Default: `100`
 
 ### <a name="input_container_initial_image"></a> [container\_initial\_image](#input\_container\_initial\_image)
 
-Description: container image to use
+Description: The initial image to use for the container. Be aware that we are ignoring changes to this as terraform is not very good at managing your application deployments. However we need an initial image to set, so we can deploy cloudrun itself the first time around and manage the bits we want to manage here.
 
 Type: `string`
 
@@ -81,7 +87,8 @@ Default: `"us-docker.pkg.dev/cloudrun/container/hello"`
 
 ### <a name="input_execution_environment"></a> [execution\_environment](#input\_execution\_environment)
 
-Description: there is gen1 and gen2
+Description: gen1 or gen2  
+more detail on the up and downsides of the new (in preview) execution environment: https://cloud.google.com/run/docs/about-execution-environments
 
 Type: `string`
 
@@ -146,7 +153,8 @@ Default: `null`
 
 ### <a name="input_vpc_access_egress"></a> [vpc\_access\_egress](#input\_vpc\_access\_egress)
 
-Description: do we want to route everything or just private ranges through the vpc?
+Description: **private-ranges-only**: Only route private ranges through the VPC
+**all-traffic**: Route all traffic through the VPC. Be aware this will incur additional cost and may not be suitable. It gives you a lot more control however, so depending on your use case this may be the right way to go.
 
 Type: `string`
 
@@ -158,5 +166,5 @@ The following outputs are exported:
 
 ### <a name="output_network_endpoint_group_id"></a> [network\_endpoint\_group\_id](#output\_network\_endpoint\_group\_id)
 
-Description: n/a
+Description: ID of the regional Serverless Network Endpoint Group, that can be used with Cloud Load Balancing
 <!-- END_TF_DOCS -->

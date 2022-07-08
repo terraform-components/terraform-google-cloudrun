@@ -43,19 +43,26 @@ variable "ingress" {
 variable "execution_environment" {
   type        = string
   default     = "gen1"
-  description = "there is gen1 and gen2"
+  description = <<-EOT
+    gen1 or gen2
+    more detail on the up and downsides of the new (in preview) execution environment: https://cloud.google.com/run/docs/about-execution-environments
+    EOT
 }
 
 variable "container_concurrency" {
   type        = number
   default     = 100
-  description = "how many requests can be handled at the same time"
+  description = <<-EOT
+    How many requests can be handled at the same time. 
+    **This is a critical setting for cloudrun**
+    Read more: https://cloud.google.com/run/docs/about-concurrency
+    EOT
 }
 
 variable "container_initial_image" {
   type        = string
   default     = "us-docker.pkg.dev/cloudrun/container/hello"
-  description = "container image to use"
+  description = "The initial image to use for the container. Be aware that we are ignoring changes to this as terraform is not very good at managing your application deployments. However we need an initial image to set, so we can deploy cloudrun itself the first time around and manage the bits we want to manage here."
 }
 
 variable "min_scale" {
@@ -73,7 +80,10 @@ variable "max_scale" {
 variable "vpc_access_egress" {
   type        = string
   default     = "private-ranges-only"
-  description = "do we want to route everything or just private ranges through the vpc?"
+  description = <<-EOT
+    **private-ranges-only**: Only route private ranges through the VPC
+    **all-traffic**: Route all traffic through the VPC. Be aware this will incur additional cost and may not be suitable. It gives you a lot more control however, so depending on your use case this may be the right way to go.
+    EOT
 }
 
 variable "vpc_access_connector" {
@@ -89,5 +99,6 @@ variable "cloudsql_connection_name" {
 }
 
 variable "environment_variables" {
-  type = map(string)
+  type        = map(string)
+  description = "values to set in the environment"
 }
