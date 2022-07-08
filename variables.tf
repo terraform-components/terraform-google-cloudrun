@@ -72,3 +72,7 @@ variable "cloudsql_connection_name" {
   default     = null
   description = "if set will populate the cloud sql connection name"
 }
+
+variable "environment_variables" {
+  type = map(string)
+}

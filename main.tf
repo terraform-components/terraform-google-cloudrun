@@ -23,6 +23,14 @@ resource "google_cloud_run_service" "main" {
       container_concurrency = var.container_concurrency
       containers {
         image = var.container_initial_image
+
+        dynamic "env" {
+          for_each = var.environment_variables
+          content {
+            name  = env.key
+            value = env.value
+          }
+        }
       }
     }
 
