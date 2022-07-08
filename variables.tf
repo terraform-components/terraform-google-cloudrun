@@ -18,13 +18,21 @@ variable "invokers" {
   default     = ["allUsers"]
   description = <<-EOT
     **allUsers**: Anyone on the Internet
+
     **allAuthenticatedUsers**: Anyone logged in with a Google Account
+
     **user:{email}**: A specific user
+
     **serviceAccount:{email}**: Service Account
+
     **group:{email}**: Google Group
+
     **domain:{domain}**: G Suite domain
+
     **projectOwner:{project_id}**: Owners of that project
+
     **projectEditor:{project_id}**: Editors of that project
+
     **projectViewer:{projectid}**: Viewers of that project
     EOT
 }
@@ -34,8 +42,11 @@ variable "ingress" {
   default     = "internal-and-cloud-load-balancing"
   description = <<-EOT
     **all**: Public
+
     **internal**: Inbound from VPC
+
     **internal-and-cloud-load-balancing**: Inbound from VPC and Cloud Load Balancing
+
     https://cloud.google.com/sdk/gcloud/reference/run/deploy#--ingress
     EOT
 }
@@ -45,6 +56,7 @@ variable "execution_environment" {
   default     = "gen1"
   description = <<-EOT
     gen1 or gen2
+
     more detail on the up and downsides of the new (in preview) execution environment: https://cloud.google.com/run/docs/about-execution-environments
     EOT
 }
@@ -54,7 +66,9 @@ variable "container_concurrency" {
   default     = 100
   description = <<-EOT
     How many requests can be handled at the same time. 
+
     **This is a critical setting for cloudrun**
+
     Read more: https://cloud.google.com/run/docs/about-concurrency
     EOT
 }
@@ -82,6 +96,7 @@ variable "vpc_access_egress" {
   default     = "private-ranges-only"
   description = <<-EOT
     **private-ranges-only**: Only route private ranges through the VPC
+    
     **all-traffic**: Route all traffic through the VPC. Be aware this will incur additional cost and may not be suitable. It gives you a lot more control however, so depending on your use case this may be the right way to go.
     EOT
 }

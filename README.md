@@ -70,7 +70,9 @@ Default: `null`
 ### <a name="input_container_concurrency"></a> [container\_concurrency](#input\_container\_concurrency)
 
 Description: How many requests can be handled at the same time.
-**This is a critical setting for cloudrun**  
+
+**This is a critical setting for cloudrun**
+
 Read more: https://cloud.google.com/run/docs/about-concurrency
 
 Type: `number`
@@ -87,7 +89,8 @@ Default: `"us-docker.pkg.dev/cloudrun/container/hello"`
 
 ### <a name="input_execution_environment"></a> [execution\_environment](#input\_execution\_environment)
 
-Description: gen1 or gen2  
+Description: gen1 or gen2
+
 more detail on the up and downsides of the new (in preview) execution environment: https://cloud.google.com/run/docs/about-execution-environments
 
 Type: `string`
@@ -97,8 +100,11 @@ Default: `"gen1"`
 ### <a name="input_ingress"></a> [ingress](#input\_ingress)
 
 Description: **all**: Public
+
 **internal**: Inbound from VPC
-**internal-and-cloud-load-balancing**: Inbound from VPC and Cloud Load Balancing  
+
+**internal-and-cloud-load-balancing**: Inbound from VPC and Cloud Load Balancing
+
 https://cloud.google.com/sdk/gcloud/reference/run/deploy#--ingress
 
 Type: `string`
@@ -108,13 +114,21 @@ Default: `"internal-and-cloud-load-balancing"`
 ### <a name="input_invokers"></a> [invokers](#input\_invokers)
 
 Description: **allUsers**: Anyone on the Internet
+
 **allAuthenticatedUsers**: Anyone logged in with a Google Account
+
 **user:{email}**: A specific user
+
 **serviceAccount:{email}**: Service Account
+
 **group:{email}**: Google Group
+
 **domain:{domain}**: G Suite domain
+
 **projectOwner:{project\_id}**: Owners of that project
+
 **projectEditor:{project\_id}**: Editors of that project
+
 **projectViewer:{projectid}**: Viewers of that project
 
 Type: `list(string)`
@@ -154,6 +168,7 @@ Default: `null`
 ### <a name="input_vpc_access_egress"></a> [vpc\_access\_egress](#input\_vpc\_access\_egress)
 
 Description: **private-ranges-only**: Only route private ranges through the VPC
+
 **all-traffic**: Route all traffic through the VPC. Be aware this will incur additional cost and may not be suitable. It gives you a lot more control however, so depending on your use case this may be the right way to go.
 
 Type: `string`
