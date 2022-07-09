@@ -9,7 +9,7 @@ variable "name_format" {
 
 variable "name" {
   type        = string
-  description = "Name of the Service"
+  description = "Name of the Cloud Run Service. Cloud Run names are unique within the project and location. This means you can keep the name the same across regions, if you prefer this."
 }
 
 variable "region" {

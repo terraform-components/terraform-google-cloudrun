@@ -33,7 +33,7 @@ The following input variables are required:
 
 ### <a name="input_name"></a> [name](#input\_name)
 
-Description: Name of the Service
+Description: Name of the Cloud Run Service. Cloud Run names are unique within the project and location. This means you can keep the name the same across regions, if you prefer this.
 
 Type: `string`
 
