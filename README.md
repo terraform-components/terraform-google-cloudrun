@@ -31,12 +31,6 @@ The following resources are used by this module:
 
 The following input variables are required:
 
-### <a name="input_environment_variables"></a> [environment\_variables](#input\_environment\_variables)
-
-Description: values to set in the environment
-
-Type: `map(string)`
-
 ### <a name="input_name"></a> [name](#input\_name)
 
 Description: Name of the Service
@@ -86,6 +80,14 @@ Description: The initial image to use for the container. Be aware that we are ig
 Type: `string`
 
 Default: `"us-docker.pkg.dev/cloudrun/container/hello"`
+
+### <a name="input_environment_variables"></a> [environment\_variables](#input\_environment\_variables)
+
+Description: values to set in the environment
+
+Type: `map(string)`
+
+Default: `{}`
 
 ### <a name="input_execution_environment"></a> [execution\_environment](#input\_execution\_environment)
 

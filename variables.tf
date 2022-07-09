@@ -124,5 +124,6 @@ variable "cloudsql_connection_name" {
 
 variable "environment_variables" {
   type        = map(string)
+  default     = {}
   description = "values to set in the environment"
 }
