@@ -1,5 +1,5 @@
 resource "google_cloud_run_service" "main" {
-  name                       = var.name
+  name                       = format(local.name_format.name1, var.name)
   location                   = var.region
   autogenerate_revision_name = true
 

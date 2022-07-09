@@ -157,6 +157,26 @@ Type: `number`
 
 Default: `0`
 
+### <a name="input_name_format"></a> [name\_format](#input\_name\_format)
+
+Description: n/a
+
+Type:
+
+```hcl
+object({
+    name1 = string
+  })
+```
+
+Default:
+
+```json
+{
+  "name1": "%s"
+}
+```
+
 ### <a name="input_vpc_access_connector"></a> [vpc\_access\_connector](#input\_vpc\_access\_connector)
 
 Description: if set, this will use that vpc access connector of a connected vpc
